@@ -64,11 +64,11 @@ class Form extends Component {
       passwordInputErrors: this.handlePasswordValidation()
     }, () => {
       if (
-        !this.state.nameInputError && 
+        !this.state.nameInputErrors && 
         !this.state.emailInputErrors && 
         !this.state.birthdayInputErrors && 
         !this.state.passwordInputErrors) {
-
+          
         console.log(this.createRequest())
       }
     })
