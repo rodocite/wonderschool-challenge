@@ -1,0 +1,34 @@
+.app {
+  background: #F7F7F7;
+  min-height: 100vh;
+  padding: 100px 100px 70px 100px;
+}
+
+.formContainer {
+  background: #FFFFFF;
+  border: 1px solid #EEEEEE;
+  margin: 0 auto;
+  max-width: 320px;
+  padding: 30px 15px 20px 15px;
+}
+
+.formHeader {
+  margin: 0;
+}
+
+.divider {
+  border-bottom: 1px solid #EEEEEE;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.submitForm {
+  background: #5196CB;
+  border-radius: 35px;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 20px;
+  padding: 15px;
+  text-align: center;
+}
