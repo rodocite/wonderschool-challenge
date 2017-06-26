@@ -15,7 +15,7 @@ class Form extends Component {
       name: this.inputValueOf(this.nameInput),
       email: this.inputValueOf(this.emailInput),
       birthday: this.inputValueOf(this.birthdayInput),
-      password: this.inputValueOf(this.passwordInput)
+      password: btoa(this.inputValueOf(this.passwordInput))
     }
   }
 
@@ -68,7 +68,7 @@ class Form extends Component {
         !this.state.emailInputErrors && 
         !this.state.birthdayInputErrors && 
         !this.state.passwordInputErrors) {
-          
+
         console.log(this.createRequest())
       }
     })
