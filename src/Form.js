@@ -91,7 +91,7 @@ class Form extends Component {
             Create an Account
           </h3>
           <div className="divider"></div>
-          <Input label="NAME" ref={input => {this.nameInput = input}} type="text" error={this.state.nameInputErrors} onFocus={this.handleClearError} />
+          <Input label="NAME" placeholder="First Last" ref={input => {this.nameInput = input}} type="text" error={this.state.nameInputErrors} onFocus={this.handleClearError} />
           <Input label="Email" ref={input => {this.emailInput = input}} type="email" error={this.state.emailInputErrors} onFocus={this.handleClearError} />
           <Input label="biRThDAy" ref={input => {this.birthdayInput = input}} type="date" error={this.state.birthdayInputErrors} onFocus={this.handleClearError} />
           <Input label="password" ref={input => {this.passwordInput = input}} type="password" error={this.state.passwordInputErrors} onFocus={this.handleClearError} />

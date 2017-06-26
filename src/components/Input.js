@@ -13,7 +13,7 @@ class Input extends Component {
     return (
       <div>
         <div className="inputLabel">{label}</div>
-        <input className={!error ? "inputField" : "inputFieldError"} type={type} onFocus={onFocus} />
+        <input className={!error ? "inputField" : "inputFieldError"} type={type} placeholder={this.props.placeholder} onFocus={onFocus} />
         {error ? this.renderError(): null}
       </div>
     )
