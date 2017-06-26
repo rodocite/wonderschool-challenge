@@ -75,12 +75,29 @@ class Form extends Component {
   }
 
   handleClearError = e => {
-    this.setState({
-      nameInputErrors: null,
-      emailInputErrors: null,
-      birthdayInputErrors: null,
-      passwordInputErrors: null
-    })
+    if (e.target.type === 'text') {
+      this.setState({
+        nameInputErrors: null,
+      })
+    }
+
+    if (e.target.type === 'email') {
+      this.setState({
+        emailInputErrors: null,
+      })
+    }
+
+    if (e.target.type === 'date') {
+      this.setState({
+        birthdayInputErrors: null,
+      })
+    }
+
+    if (e.target.type === 'password') {
+      this.setState({
+        passwordInputErrors: null
+      })
+    }
   }
 
   render() {
