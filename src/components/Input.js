@@ -8,12 +8,12 @@ class Input extends Component {
   }
 
   render() {
-    const {label, type, error, onFocus} = this.props
+    const {label, type, error, onFocus, onChange} = this.props
 
     return (
       <div>
         <div className="inputLabel">{label}</div>
-        <input className={!error ? "inputField" : "inputFieldError"} type={type} placeholder={this.props.placeholder} onFocus={onFocus} />
+        <input onChange={onChange} className={!error ? "inputField" : "inputFieldError"} type={type} placeholder={this.props.placeholder} onFocus={onFocus} name={label} />
         {error ? this.renderError(): null}
       </div>
     )

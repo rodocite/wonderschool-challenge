@@ -1,26 +1,31 @@
 import React, {Component} from 'react'
-import {findDOMNode} from 'react-dom'
 import Input from './components/Input'
 import './form.css'
 
 class Form extends Component {
   state = {}
 
-  inputValueOf(ref) {
-    return findDOMNode(ref).children[1].value
+  inputValueOf(field) {
+    return this.state[field]
+  }
+
+  handleSetFieldValue = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
   }
 
   createRequest() {
     return {
-      name: this.inputValueOf(this.nameInput),
-      email: this.inputValueOf(this.emailInput),
-      birthday: this.inputValueOf(this.birthdayInput),
-      password: btoa(this.inputValueOf(this.passwordInput))
+      name: this.inputValueOf('name'),
+      email: this.inputValueOf('email'),
+      birthday: this.inputValueOf('birthday'),
+      password: btoa(this.inputValueOf('password'))
     }
   }
 
   handleNameValidation() {
-    const value = this.inputValueOf(this.nameInput)
+    const value = this.inputValueOf('name')
 
     if (value === '' || value === undefined) {
       return 'Please fill out your name.' 
@@ -28,7 +33,7 @@ class Form extends Component {
   }
 
   handleEmailValidation() {
-    const value = this.inputValueOf(this.emailInput)
+    const value = this.inputValueOf('email')
     const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 
     if (!value.match(emailRegex)) {
@@ -37,7 +42,7 @@ class Form extends Component {
   }
 
   handleBirthDateValidation() {
-    const value = this.inputValueOf(this.birthdayInput)
+    const value = this.inputValueOf('birthday')
 
     if (value === '' || value === undefined) {
       return 'Please choose a birthday.' 
@@ -45,7 +50,7 @@ class Form extends Component {
   }
 
   handlePasswordValidation() {
-    const value = this.inputValueOf(this.passwordInput)
+    const value = this.inputValueOf('password')
 
     if (value === '') {
       return 'Please enter a password.'
@@ -68,7 +73,7 @@ class Form extends Component {
         !this.state.emailInputErrors && 
         !this.state.birthdayInputErrors && 
         !this.state.passwordInputErrors) {
-
+        
         console.log(this.createRequest())
       }
     })
@@ -95,7 +100,7 @@ class Form extends Component {
 
     if (e.target.type === 'password') {
       this.setState({
-        passwordInputErrors: null
+        passwordInputErrors: null,
       })
     }
   }
@@ -108,11 +113,11 @@ class Form extends Component {
             Create an Account
           </h3>
           <div className="divider"></div>
-          <Input label="NAME" placeholder="First Last" ref={input => {this.nameInput = input}} type="text" error={this.state.nameInputErrors} onFocus={this.handleClearError} />
-          <Input label="Email" ref={input => {this.emailInput = input}} type="email" error={this.state.emailInputErrors} onFocus={this.handleClearError} />
-          <Input label="biRThDAy" ref={input => {this.birthdayInput = input}} type="date" error={this.state.birthdayInputErrors} onFocus={this.handleClearError} />
-          <Input label="password" ref={input => {this.passwordInput = input}} type="password" error={this.state.passwordInputErrors} onFocus={this.handleClearError} />
-          <div className="submitForm" onClick={this.handleSubmit}>Create an Account</div>
+          <Input label="name" onChange={this.handleSetFieldValue} placeholder="First Last" type="text" error={this.state.nameInputErrors} onFocus={this.handleClearError} />
+          <Input label="email" onChange={this.handleSetFieldValue} type="email" error={this.state.emailInputErrors} onFocus={this.handleClearError} />
+          <Input label="birthday" onChange={this.handleSetFieldValue} type="date" error={this.state.birthdayInputErrors} onFocus={this.handleClearError} />
+          <Input label="password" onChange={this.handleSetFieldValue} type="password" error={this.state.passwordInputErrors} onFocus={this.handleClearError} />
+          <div className="submitForm" onChange={this.handleSetFieldValue} onClick={this.handleSubmit}>Create an Account</div>
         </div>
       </div>
     )
