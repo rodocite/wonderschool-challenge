@@ -3,7 +3,12 @@ import Input from './components/Input'
 import './form.css'
 
 class Form extends Component {
-  state = {}
+  state = {
+    name: null,
+    email: null,
+    birthday: null,
+    password: null,
+  }
 
   inputValueOf(field) {
     return this.state[field]
@@ -11,7 +16,7 @@ class Form extends Component {
 
   handleSetFieldValue = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value.trim()
     })
   }
 
@@ -27,7 +32,7 @@ class Form extends Component {
   handleNameValidation() {
     const value = this.inputValueOf('name')
 
-    if (value === '' || value === undefined) {
+    if (!value) {
       return 'Please fill out your name.' 
     }
   }
@@ -36,7 +41,7 @@ class Form extends Component {
     const value = this.inputValueOf('email')
     const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 
-    if (!value.match(emailRegex)) {
+    if (!value || !value.match(emailRegex)) {
       return 'Please enter a valid email address.' 
     }
   }
@@ -44,7 +49,7 @@ class Form extends Component {
   handleBirthDateValidation() {
     const value = this.inputValueOf('birthday')
 
-    if (value === '' || value === undefined) {
+    if (!value) {
       return 'Please choose a birthday.' 
     }
   }
@@ -52,7 +57,7 @@ class Form extends Component {
   handlePasswordValidation() {
     const value = this.inputValueOf('password')
 
-    if (value === '') {
+    if (!value) {
       return 'Please enter a password.'
     }
 
