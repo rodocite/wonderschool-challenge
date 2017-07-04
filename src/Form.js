@@ -117,7 +117,7 @@ class Form extends Component {
           <Input label="email" onChange={this.handleSetFieldValue} type="email" error={this.state.emailInputErrors} onFocus={this.handleClearError} />
           <Input label="birthday" onChange={this.handleSetFieldValue} type="date" error={this.state.birthdayInputErrors} onFocus={this.handleClearError} />
           <Input label="password" onChange={this.handleSetFieldValue} type="password" error={this.state.passwordInputErrors} onFocus={this.handleClearError} />
-          <div className="submitForm" onChange={this.handleSetFieldValue} onClick={this.handleSubmit}>Create an Account</div>
+          <div className="submitForm" onClick={this.handleSubmit}>Create an Account</div>
         </div>
       </div>
     )
